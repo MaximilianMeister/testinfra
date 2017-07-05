@@ -7,9 +7,9 @@ of a CaaSP install has been completed correctly
 
 To run, you need to do a test run per node type right now in the following form:
 
-`testinfra --ssh-config=~/.ssh/config --sudo --hosts=admin-ip -m "admin or common" --junit-xml admin.xml`
-`testinfra --ssh-config=~/.ssh/config --sudo --hosts=master-ip -m "master or common" --junit-xml master.xml`
-`testinfra --ssh-config=~/.ssh/config --sudo --hosts=worker-1-ip,worker-2-ip -m "worker or common" --junit-xml workers.xml`
+`pytest --ssh-config=~/.ssh/config --sudo --hosts=admin-ip -m "admin or common" --junit-xml admin.xml -v`
+`pytest --ssh-config=~/.ssh/config --sudo --hosts=master-ip -m "master or common" --junit-xml master.xml -v`
+`pytest --ssh-config=~/.ssh/config --sudo --hosts=worker-1-ip,worker-2-ip -m "worker or common" --junit-xml workers.xml -v`
 
 Where `~/.ssh/config` is an ssh config file that tells ssh what key to use for the connection
 

@@ -3,7 +3,6 @@ import json
 
 @pytest.mark.master
 class TestKubernetesMaster(object):
-    """docstring for TestBaseEnv"""
 
     @pytest.mark.parametrize("service", [
         "kube-apiserver",

@@ -4,7 +4,6 @@ import testinfra
 @pytest.mark.worker
 class TestKubernetesWorker(object):
 
-    """docstring for TestBaseEnv"""
     @pytest.mark.parametrize("service", [
         "flanneld",
         "docker",
