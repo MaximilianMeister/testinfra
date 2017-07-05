@@ -30,3 +30,7 @@ class TestKubernetesWorker(object):
 
     def test_salt_role(self, host):
         assert 'kube-minion' in host.salt("grains.get", "roles")
+
+    def test_salt_id(self, host):
+        machine_id = host.file('/etc/machine-id').content_string.rstrip()
+        assert machine_id in host.salt("grains.get", "id")

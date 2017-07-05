@@ -43,3 +43,7 @@ class TestKubernetesMaster(object):
             for item in node["status"]["conditions"]:
                 if item["type"] is "Ready":
                     assert bool(item["status"])
+
+    def test_salt_id(self, host):
+        machine_id = host.file('/etc/machine-id').content_string.rstrip()
+        assert machine_id in host.salt("grains.get", "id")
