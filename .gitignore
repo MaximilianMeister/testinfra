@@ -160,4 +160,6 @@ GitHub.sublime-settings
 pyvenv.cfg
 pip-selfcheck.json
 
+
+junit.xml
 # End of https://www.gitignore.io/api/linux,python,virtualenv,sublimetext
