@@ -10,6 +10,13 @@ class TestCommon(object):
     def test_services_running(self, host, service):
         host_service = host.service(service)
         assert host_service.is_running
+
+    @pytest.mark.parametrize("service", [
+        "etcd",
+        "salt-minion"
+    ])
+    def test_services_enabled(self, host, service):
+        host_service = host.service(service)
         assert host_service.is_enabled
 
     def test_bootstrap_grain(self, host):
