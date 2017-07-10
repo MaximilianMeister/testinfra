@@ -1,2 +1,3 @@
 testinfra
+pytest>=3.13
 paramiko
