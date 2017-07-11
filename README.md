@@ -3,15 +3,31 @@
 This is a collection of testinfra tests that can be used to ensure that the bootstraping 
 of a CaaSP install has been completed correctly
 
-## Running
+## Running tests
 
-To run, you need to do a test run per node type right now in the following form:
+`tox` will run the tests against all nodes in a terraform repository.
+
+It looks for an `environment.json` file in a path `../terraform/environment.json` - if your file is in a different location, use the 
+`SSH_CONFIG` enviroment variable to point to it.
+
+`tox -e linters` runs code syntax checks on the tests, and should be ran before a PR is opened
+
+## Development
+
+If you are working on a test for a role, you can run single role tests by running 
+
+`tox -e <role> -- --hosts <ip of node>` where `<role>` is one of admin, worker or master.
+
+## Manually Running
+
+To manually run the tests, you need to do a test run per node type right now in the following form:
 
 `pytest --ssh-config=~/.ssh/config --sudo --hosts=admin-ip -m "admin or common" --junit-xml admin.xml -v`
 `pytest --ssh-config=~/.ssh/config --sudo --hosts=master-ip -m "master or common" --junit-xml master.xml -v`
 `pytest --ssh-config=~/.ssh/config --sudo --hosts=worker-1-ip,worker-2-ip -m "worker or common" --junit-xml workers.xml -v`
 
-Where `~/.ssh/config` is an ssh config file that tells ssh what key to use for the connection
+Where `~/.ssh/config` is an ssh config file that tells ssh what key to use for the connection. 
+Have a look at `tools/ssh_config.example` and `tools/generate_ssh_config.sh` for an example
 
 ## File Structure
 
@@ -26,3 +42,4 @@ Right now, there is 4 test files.
 
 - testinfra http://testinfra.readthedocs.io/en/latest/index.html
 - pytest https://docs.pytest.org/en/latest/contents.html
+- tox https://tox.readthedocs.io/en/latest/
